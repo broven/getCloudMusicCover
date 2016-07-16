@@ -1,3 +1,3 @@
 module.exports.param=()=>{
-  return process.argv[2];
+  return process.argv[2]||"";
 }

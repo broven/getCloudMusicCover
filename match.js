@@ -5,7 +5,7 @@ let cheerio = require('cheerio');
 let request = require('superagent');
 var url = require('url');
 var fs = require('fs');
-var open = require('open');
+
 //.j-img
 module.exports = (paramurl) => {
     //歌
