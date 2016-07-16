@@ -1,6 +1,6 @@
-{
-  "name": "cloud-image",
-  "version": "1.0.1",
+﻿{
+  "name": "CloudMusicCover",
+  "version": "1.0.0",
   "description": "下载网易乐音乐的专辑 歌单的图片",
   "main": "main.js",
   "bin": {
