@@ -5,6 +5,7 @@ let cheerio = require('cheerio');
 let request = require('superagent');
 var url = require('url');
 var fs = require('fs');
+var open = require('open');
 //.j-img
 module.exports = (paramurl) => {
     //歌
@@ -22,16 +23,18 @@ module.exports = (paramurl) => {
                 return 0;
             } else {
                 const $ = cheerio.load(res.text);
-                const photoName =  getMusicInfo($);
+                const photoName = getMusicInfo($);
                 let imgurl = $('.j-img').attr('src');
-                  //imgurl=url.format(((url.parse(imgurl)).search=''));
-                 imgurl = url.parse(imgurl) //去掉图像大小的请求参数
-                 imgurl.search='';
-                 imgurl = url.format(imgurl);
+                //imgurl=url.format(((url.parse(imgurl)).search=''));
+                imgurl = url.parse(imgurl) //去掉图像大小的请求参数
+                imgurl.search = '';
+                imgurl = url.format(imgurl);
                 let extName = imgurl.substr(imgurl.lastIndexOf('.'));
                 let req = request.get(imgurl);
 
-                req.pipe(fs.createWriteStream('./'+photoName+extName));
+                req.pipe(fs.createWriteStream('./' + photoName + extName));
+
+
             }
         });
 
@@ -46,7 +49,7 @@ let handleparamUrl = (paramurl) => {
         process.exit(500);
     }
     let hash = parseurl.hash.split('/');
-      return parseurl.host + '/' + hash[hash.length - 1];
+    return parseurl.host + '/' + hash[hash.length - 1];
 }
 
 // <div class="tit">
@@ -54,10 +57,10 @@ let handleparamUrl = (paramurl) => {
 // <a title="播放mv" href="/mv?id=5342246"><i class="icn u-icn u-icn-2"></i></a>
 // <div class="subtit f-fs1 f-ff2">电影《大鱼海棠》片尾曲</div>
 // </div>
-let getMusicInfo = ($)=>{
-  //歌手$('p.des:nth-child(2) > span:nth-child(1)')
-  //歌单.name > a:nth-child(1)
-    return   $('.tit>.f-ff2').text();
+let getMusicInfo = ($) => {
+    //歌手$('p.des:nth-child(2) > span:nth-child(1)')
+    //歌单.name > a:nth-child(1)
+    return $('.tit>.f-ff2').text();
 
 
 }

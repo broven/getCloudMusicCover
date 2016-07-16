@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 const match = require('./match');
+const cli = require('./cli');
 const url = require('url');
-console.log("run...");
-
-
-let photourl = 'http://music.163.com/#/m/playlist?id=421492315&userid=57694400';
+let photourl = cli.param();
 match(photourl);
