@@ -2,6 +2,7 @@
   "name": "CloudMusicCover",
   "version": "1.0.2",
   "description": "下载网易乐音乐的专辑 歌单的图片",
+  "keywords":["NeteaseCloudMusic","网易云音乐","网易云","图片下载"],
   "main": "main.js",
   "bin": {
     "cc": "./main.js"
@@ -18,5 +19,6 @@
   "dependencies": {
     "cheerio": "^0.20.0",
     "superagent": "^2.1.0"
+        
   }
 }
