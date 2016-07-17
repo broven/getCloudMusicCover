@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 'use strict'
-let cheerio = require('cheerio');
-let request = require('superagent');
-var url = require('url');
-var fs = require('fs');
-
+const cheerio = require('cheerio');
+const request = require('superagent');
+const url = require('url');
+const fs = require('fs');
+const opn = require('opn');
 //.j-img
-module.exports = (paramurl) => {
+module.exports = (paramurl,callback) => {
     //歌
     //原始:http://music.163.com/#/song?id=4386589&userid=57694400
     //http://music.163.com/song?id=4386589&userid=57694400
@@ -20,7 +20,7 @@ module.exports = (paramurl) => {
         .end((err, res) => {
             if (err) {
                 console.log('获取网页失败');
-                return 0;
+                process.exit(1);
             } else {
                 const $ = cheerio.load(res.text);
                 const photoName = getMusicInfo($);
@@ -29,11 +29,12 @@ module.exports = (paramurl) => {
                 imgurl = url.parse(imgurl) //去掉图像大小的请求参数
                 imgurl.search = '';
                 imgurl = url.format(imgurl);
-                let extName = imgurl.substr(imgurl.lastIndexOf('.'));
-                let req = request.get(imgurl);
-
-                req.pipe(fs.createWriteStream('./' + photoName + extName));
-
+                const extName = imgurl.substr(imgurl.lastIndexOf('.'));
+                const req = request.get(imgurl);
+                const fileName=photoName + extName
+                req.pipe(fs.createWriteStream(fileName));
+                console.log("1"+fileName);
+                callback(fileName);
 
             }
         });
