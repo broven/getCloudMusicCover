@@ -6,7 +6,10 @@
     "NeteaseCloudMusic",
     "网易云音乐",
     "网易云",
-    "图片下载"
+    "图片下载",
+    "cil",
+    "cover",
+    "image"
   ],
   "main": "main.js",
   "bin": {

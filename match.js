@@ -6,6 +6,7 @@ const request = require('superagent');
 const url = require('url');
 const fs = require('fs');
 const opn = require('opn');
+const config = require('./config.json')
 //.j-img
 module.exports = (paramurl,callback) => {
     //歌
@@ -32,8 +33,7 @@ module.exports = (paramurl,callback) => {
                 const extName = imgurl.substr(imgurl.lastIndexOf('.'));
                 const req = request.get(imgurl);
                 const fileName=photoName + extName
-                req.pipe(fs.createWriteStream(fileName));
-                console.log("1"+fileName);
+                req.pipe(fs.createWriteStream(config.path+fileName));
                 callback(fileName);
 
             }
