@@ -1,5 +1,5 @@
 # 网易云 图片获取 CloudMusicCover
-##install
+##i nstall
 ```
 npm install CloudMusicCover --global
 ```
