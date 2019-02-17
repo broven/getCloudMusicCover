@@ -1,9 +1,9 @@
-#网易云 图片获取 CloudMusicCover
+# 网易云 图片获取 CloudMusicCover
 ##install
 ```
 npm install CloudMusicCover --global
 ```
-##Usage
+## Usage
 ```
 cc "歌曲或专辑的分享链接"  
 ```
